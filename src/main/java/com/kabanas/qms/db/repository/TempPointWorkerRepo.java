@@ -1,11 +1,10 @@
 package com.kabanas.qms.db.repository;
 
-import com.kabanas.qms.db.model.Customer;
-import com.kabanas.qms.db.model.TagService;
+import com.kabanas.qms.db.model.TempPointWorker;
 import org.springframework.data.repository.CrudRepository;
 
 import javax.persistence.PersistenceContext;
 
 @PersistenceContext(unitName = "QMS")
-public interface TagServiceRepo extends CrudRepository<TagService,Integer> {
+public interface TempPointWorkerRepo extends CrudRepository<TempPointWorker,Integer> {
 }

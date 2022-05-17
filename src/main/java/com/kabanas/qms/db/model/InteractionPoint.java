@@ -16,8 +16,8 @@ public class InteractionPoint {
     int id;
     @Column(name = "name")
     private String name;
-    @Column(name = "status")
-    private String status;
+    @Column(name = "isActive")
+    private boolean active;
 
     @ManyToOne (optional=false, cascade=CascadeType.ALL)
     @JoinColumn(name = "type_Id")

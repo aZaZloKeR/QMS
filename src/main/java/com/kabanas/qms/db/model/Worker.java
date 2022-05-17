@@ -30,5 +30,8 @@ public class Worker {
     private Collection<Interaction> interactions;
     @OneToMany (mappedBy = "worker",fetch=FetchType.EAGER)
     @JsonIgnore
-    private Collection<WorkerTag> workerTags;
+    private Collection<ServiceWorker> serviceWorkers;
+    @OneToMany (mappedBy = "worker",fetch=FetchType.EAGER)
+    @JsonIgnore
+    private Collection<TempPointWorker> tempPointWorkers;
 }

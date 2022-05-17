@@ -1,7 +1,6 @@
 package com.kabanas.qms.db.model;
 
-import com.kabanas.qms.db.key.TagServiceKey;
-import com.kabanas.qms.db.key.TypeServiceKey;
+import com.kabanas.qms.db.key.PositionDefaultServiceKey;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -9,18 +8,20 @@ import java.io.Serializable;
 
 @Data
 @Entity
-@Table(name = "Tag_Service")
-public class TagService implements Serializable {
+@Table(name = "Position_Default_Service")
+public class PositionDefaultService implements Serializable {
     @EmbeddedId
-    TagServiceKey tagServiceKey;
+    PositionDefaultServiceKey positionDefaultServiceKey;
 
     @ManyToOne (optional=false, cascade=CascadeType.ALL)
-    @MapsId("tagId")
-    @JoinColumn(name = "tag_Id")
-    private Tag tag;
+    @MapsId("positionId")
+    @JoinColumn(name = "position_Id")
+    private Position position;
 
     @ManyToOne (optional=false, cascade=CascadeType.ALL)
     @MapsId("serviceId")
     @JoinColumn(name = "service_Id")
     private Service service;
+
+
 }

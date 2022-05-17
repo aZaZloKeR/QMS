@@ -20,18 +20,11 @@ public class Customer {
     private String secondName;
     @Column(name = "phone")
     private String phone;
+    @Column(name = "identity_document")
+    private String identityDocument;
 
     @OneToMany (mappedBy="customer", fetch=FetchType.EAGER)
     @JsonIgnore
     private Collection<Interaction> interactions;
 
-  /*  public void setPhone(String phone) {
-        if ((phone.length() == 12 && phone.charAt(0)!='+') || (phone.length() == 11)) // впадлу полную проверку номера телефона писать
-            this.phone = phone;
-        else try {
-            throw new Exception("Введите правильный номер телефона");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
 }

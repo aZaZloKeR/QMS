@@ -7,6 +7,8 @@
 
     <persistence-unit name="QMS" transaction-type="JTA">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.kabanas.qms.db.model.ServiceWorker</class>
+        <class>com.kabanas.qms.db.model.TempPointWorker</class>
         <class>com.kabanas.qms.db.model.Users</class>
         <class>com.kabanas.qms.db.model.Customer</class>
         <class>com.kabanas.qms.db.model.Interaction</class>
@@ -14,12 +16,9 @@
         <class>com.kabanas.qms.db.model.InteractionTypePoint</class>
         <class>com.kabanas.qms.db.model.TypeService</class>
         <class>com.kabanas.qms.db.model.Position</class>
-        <class>com.kabanas.qms.db.model.PositionDefaultTag</class>
+        <class>com.kabanas.qms.db.model.PositionDefaultService</class>
         <class>com.kabanas.qms.db.model.Service</class>
-        <class>com.kabanas.qms.db.model.Tag</class>
-        <class>com.kabanas.qms.db.model.TagService</class>
         <class>com.kabanas.qms.db.model.Worker</class>
-        <class>com.kabanas.qms.db.model.WorkerTag</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=QMS"/>
