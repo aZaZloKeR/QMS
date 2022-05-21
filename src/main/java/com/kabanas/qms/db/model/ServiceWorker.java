@@ -4,9 +4,8 @@ import com.kabanas.qms.db.key.ServiceWorkerKey;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
-@Data // todo связь с бд, и вообще сделать сущность действующей
+@Data
 @Entity
 @Table(name = "Service_Worker")
 public class ServiceWorker{

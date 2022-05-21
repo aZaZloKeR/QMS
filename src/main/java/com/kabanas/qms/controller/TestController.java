@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.util.Calendar;
 import java.util.Date;
 
 @Controller
@@ -29,11 +32,16 @@ public class TestController {
     private ServiceRepo serviceRepo;
     @Autowired
     private WorkerRepo workerRepo;
+    @Autowired
+    private TempPointWorkerRepo tempPointWorkerRepo;
 
-
+    @GetMapping(value = "/testSelect")
+    public @ResponseBody String testSelect(){
+        return  tempPointWorkerRepo.findThisInteractionPoint(3).get().getInteractionPoint().getType().getName();
+    }
     @GetMapping(value = "/test")
-    public @ResponseBody Integer test(){
-        return interactionRepo.findMaxOrigId().get();
+    public @ResponseBody Iterable<Interaction> test(){
+        return interactionRepo.findByStatusOrderByRequestTime("wait");
     }
 
     @GetMapping(value = "/test/test")

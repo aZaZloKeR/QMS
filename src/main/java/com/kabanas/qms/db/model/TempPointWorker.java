@@ -5,6 +5,7 @@ import com.kabanas.qms.db.key.TempPointWorkerKey;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
@@ -12,6 +13,11 @@ import javax.persistence.*;
 public class TempPointWorker{
     @EmbeddedId
     TempPointWorkerKey tempPointWorkerKey;
+
+    @Column(name = "start_time")
+    private Date startTime;
+    @Column(name = "end_time")
+    private Date endTime;
 
     @ManyToOne(optional=false, cascade= CascadeType.ALL)
     @MapsId("workerId")

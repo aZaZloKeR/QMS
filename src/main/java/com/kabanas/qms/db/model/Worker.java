@@ -20,6 +20,8 @@ public class Worker {
     private String secondName;
     @Column(name = "phone")
     private String phone;
+    @Column(name = "isFree")
+    private boolean free;
 
     @ManyToOne (optional=false, cascade=CascadeType.ALL)
     @JoinColumn(name = "position_Id")

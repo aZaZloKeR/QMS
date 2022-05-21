@@ -26,7 +26,7 @@ public class AdminController {
 
     @PostMapping(value = "/checkQueue")
     public void checkQueue(@PathVariable int id){// пришёл id сервиса, по нему надо создать Interaction
-       // queueService.createInteraction(id);
+        //queueService.createInteraction(id);
     }
 
 }
