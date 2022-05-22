@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Data
 @Embeddable
 @EqualsAndHashCode
-public class PositionDefaultTagKey implements Serializable {
-    private int positionId;
-    private int tagId;
+public class TempPointWorkerKey implements Serializable {
+    private int pointId;
+    private int workerId;
 }

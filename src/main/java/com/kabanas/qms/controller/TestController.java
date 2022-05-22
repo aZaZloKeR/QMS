@@ -7,6 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.util.Calendar;
+import java.util.Date;
+
 @Controller
 public class TestController {
     @Autowired
@@ -22,22 +27,35 @@ public class TestController {
     @Autowired
     private PositionRepo positionRepo;
     @Autowired
-    private PositionDefaultTagRepo positionDefaultTagRepo;
+    private PositionDefaultServiceRepo positionDefaultServiceRepo;
     @Autowired
     private ServiceRepo serviceRepo;
     @Autowired
-    private TagRepo tagRepo;
-    @Autowired
     private WorkerRepo workerRepo;
     @Autowired
-    private WorkerTagRepo workerTagRepo;
+    private TempPointWorkerRepo tempPointWorkerRepo;
 
+    @GetMapping(value = "/testSelect")
+    public @ResponseBody String testSelect(){
+        return  tempPointWorkerRepo.findThisInteractionPoint(3).get().getInteractionPoint().getType().getName();
+    }
     @GetMapping(value = "/test")
     public @ResponseBody Iterable<Interaction> test(){
-        return interactionRepo.findAll();
+        return interactionRepo.findByStatusOrderByRequestTime("wait");
     }
+
     @GetMapping(value = "/test/test")
-    public @ResponseBody Iterable<InteractionPoint> testTest(){
-        return interactionPointRepo.findAll();
+    public @ResponseBody void testTest(){
+        Interaction interaction = new Interaction();
+        if (interactionRepo.findMaxOrigId().isPresent()) {
+            interaction.setOrigId(interactionRepo.findMaxOrigId().get() + 1);// нужно каждый раз проверять пользователя на ориг id СЕЙЧАС ПРОСТО ПОСТАВИТЬ НАДО БУДЕТ IDENTITY для него
+        }
+        else {
+            interaction.setOrigId(1);
+        }
+        interaction.setRequestTime(new Date());
+        interaction.setStatus("wait"); // поставить статус wait  =  занести человека в очередь
+        interaction.setService(serviceRepo.findById(1).get());
+        interactionRepo.save(interaction);
     }
 }

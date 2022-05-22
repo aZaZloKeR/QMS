@@ -24,5 +24,5 @@ public class Position {
     private Collection<Worker> workers;
     @OneToMany (mappedBy="position", fetch=FetchType.EAGER)
     @JsonIgnore
-    private Collection<PositionDefaultTag> positionDefaultTags;
+    private Collection<PositionDefaultService> positionDefaultServices;
 }

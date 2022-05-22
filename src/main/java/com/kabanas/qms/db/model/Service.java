@@ -18,8 +18,8 @@ public class Service {
     private String name;
     @Column(name = "description")
     private String description;
-    @Column(name = "status")
-    private String status;
+    @Column(name = "isActive")
+    private boolean active;
 
     @OneToMany (mappedBy="service", fetch=FetchType.EAGER)
     @JsonIgnore
@@ -29,5 +29,8 @@ public class Service {
     private Collection<TypeService> typeServices;
     @OneToMany (mappedBy="service", fetch=FetchType.EAGER)
     @JsonIgnore
-    private Collection<TagService> tagServices;
+    private Collection<PositionDefaultService> positionDefaultServices;
+    @OneToMany (mappedBy="service", fetch=FetchType.EAGER)
+    @JsonIgnore
+    private Collection<ServiceWorker> serviceWorkers;
 }

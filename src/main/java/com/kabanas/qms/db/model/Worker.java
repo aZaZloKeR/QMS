@@ -20,6 +20,8 @@ public class Worker {
     private String secondName;
     @Column(name = "phone")
     private String phone;
+    @Column(name = "isFree")
+    private boolean free;
 
     @ManyToOne (optional=false, cascade=CascadeType.ALL)
     @JoinColumn(name = "position_Id")
@@ -30,5 +32,8 @@ public class Worker {
     private Collection<Interaction> interactions;
     @OneToMany (mappedBy = "worker",fetch=FetchType.EAGER)
     @JsonIgnore
-    private Collection<WorkerTag> workerTags;
+    private Collection<ServiceWorker> serviceWorkers;
+    @OneToMany (mappedBy = "worker",fetch=FetchType.EAGER)
+    @JsonIgnore
+    private Collection<TempPointWorker> tempPointWorkers;
 }

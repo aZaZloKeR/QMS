@@ -15,9 +15,11 @@ public class Interaction {
     private int id;
     @Column(name = "orig_Id")
     private int origId;
-    @Column(name = "start_Time")
+    @Column(name = "request_time")
+    private Date requestTime;
+    @Column(name = "start_time")
     private Date startTime;
-    @Column(name = "end_Time")
+    @Column(name = "end_time")
     private Date endTime;
     @Column(name = "status")
     private String status;

@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Data
 @Embeddable
 @EqualsAndHashCode
-public class TagServiceKey implements Serializable {
-    private int tagId;
+public class PositionDefaultServiceKey implements Serializable {
+    private int positionId;
     private int serviceId;
 }
