@@ -20,4 +20,8 @@ public interface InteractionRepo extends CrudRepository<Interaction,Integer> {
     Optional<Interaction> findLongestWaitingTime();
 
     Iterable<Interaction> findByStatusOrderByRequestTime(String status);
+
+    @Query(value = "SELECT Interaction from Interaction where status = ?1 and worker.id = ?2")
+    Optional<Interaction> findTopByWorkerIdAndStatus(String status, Integer workerId); // не проверял!!!!!!!!!!!!!!
+    // получить по Id воркера, который зашит в куках  и статусу ОЖИДАЕТ ПОДТВерждения личности (waiting for identity confirmation)
 }

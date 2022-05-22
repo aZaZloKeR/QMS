@@ -20,6 +20,8 @@ public class Service {
     private String description;
     @Column(name = "isActive")
     private boolean active;
+    @Column(name = "isVisible_for_client")
+    private boolean visibleForClient;
 
     @OneToMany (mappedBy="service", fetch=FetchType.EAGER)
     @JsonIgnore
