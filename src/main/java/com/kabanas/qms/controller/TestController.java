@@ -5,6 +5,8 @@ import com.kabanas.qms.db.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalDateTime;
@@ -57,5 +59,12 @@ public class TestController {
         interaction.setStatus("wait"); // поставить статус wait  =  занести человека в очередь
         interaction.setService(serviceRepo.findById(1).get());
         interactionRepo.save(interaction);
+    }
+
+    @PostMapping(value = "/suka")
+    @ResponseBody
+    public String suka(@RequestBody String service){
+        System.err.println(service);
+        return service;
     }
 }

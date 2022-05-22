@@ -1,0 +1,38 @@
+* {
+    vertical-align: baseline;
+    font-weight: inherit;
+    font-family: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    border: 0 none;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+}
+
+main {
+
+}
+
+main div {
+    margin: 20px;
+    padding: 25px;
+    background: #97A4B9;
+    display: inline-block;
+    border: #C7DDFF solid 5px;
+    border-radius: 20px;
+    box-shadow: #97A4B9 5px 15px 20px;
+    vertical-align: top;
+}
+
+main label{
+    display: block;
+    width: 200px;
+    margin: 10px;
+    padding: 5px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    text-shadow: 2px 2px #292935;
+
+}

@@ -1,0 +1,17 @@
+nav{
+    background: #DBDBDB;
+    padding: 10px 15px;
+}
+nav a{
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 2px;
+    font-size: larger;
+    background: #97A4B9;
+    color: whitesmoke;
+    text-decoration: none;
+    border-radius: 5px;
+}
+nav .activeLink{
+    background: #292935;
+}

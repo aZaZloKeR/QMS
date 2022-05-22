@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <title>Администратор</title>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" type="text/css"/>
+    <link href="../static/css/uiKit.css" th:href="@{/css/uiKit.css}" rel="stylesheet" type="text/css"/>
+    <link href="../static/css/header.css" th:href="@{/css/header.css}" rel="stylesheet" type="text/css"/>
+    <link href="../static/css/footer.css" th:href="@{/css/footer.css}" rel="stylesheet" type="text/css"/>
+
+
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="services" class="activeLink">Услуги</a>
+        <a href="workers">Работники</a>
+        <a href="type">Типы пунктов взаимодейтвия</a>
+        <a href="points">Пункты взаимодействия</a>
+        <a href="positions">Должности</a>
+    </nav>
+</header>
+<main>
+    <div>
+        <label>Услуга
+            <select id="servicesSelect" class="placeholder" onchange="FillForm()"></select>
+        </label>
+        <label>Название услуги
+            <input id="name" type="text" class="placeholder">
+        </label>
+        <label>Описание услуги
+            <textarea id="description" class="placeholder" style="resize: none"></textarea>
+        </label>
+        <label>Активна
+            <input id="isActive" type="checkbox" class="placeholder">
+        </label>
+        <label>Видна для клиента
+            <input id="isVisibleForClient" type="checkbox" class="placeholder">
+        </label>
+        <button id="post" class="secondaryButton" onclick="createService()">Добавить</button>
+        <button id="put" class="secondaryButton" onclick="updateService()">Изменить</button>
+        <button id="delete" class="secondaryButton" onclick="deleteService()">Удалить</button>
+    </div>
+</main>
+<footer>
+
+</footer>
+<script src="../static/js/adminPage.js" th:src="@{/js/adminPage.js}" rel="script"
+        type="application/javascript"></script>
+</body>
+</html>
