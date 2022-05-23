@@ -18,4 +18,7 @@ public class Users {
     String password;
     @Column(name = "role")
     String role;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Worker worker;
 }

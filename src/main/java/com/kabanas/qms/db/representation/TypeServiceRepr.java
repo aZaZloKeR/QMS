@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class TypeServiceRepr {
-    private int typeId;
-    private int serviceId;
+    private Integer typeId;
+    private Integer serviceId;
 }

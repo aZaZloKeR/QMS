@@ -6,8 +6,8 @@ import java.util.Date;
 
 @Data
 public class TempPointWorkerRepr {
-    private int pointId;
-    private  int workerId;
+    private Integer pointId;
+    private  Integer workerId;
     private Date startTime;
     private Date endTime;
 }

@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class PositionDefaultServiceRepr {
-    private int positionId;
-    private int serviceId;
+    private Integer positionId;
+    private Integer serviceId;
 }

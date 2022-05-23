@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class ServiceWorkerRepr {
-    private int serviceId;
-    private int workerId;
+    private Integer serviceId;
+    private Integer workerId;
 }

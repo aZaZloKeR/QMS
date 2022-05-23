@@ -5,6 +5,7 @@ import com.kabanas.qms.db.repository.*;
 import com.kabanas.qms.db.representation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -54,6 +55,29 @@ public class DtoController {
             workerRepo.save(worker);
         }
     }
+    @PutMapping(value = "/worker")
+    public void updateWorker(@RequestBody WorkerRepr workerRepr){
+        if (workerRepo.findById(workerRepr.getId()).isPresent()){
+            Worker worker = workerRepo.findById(workerRepr.getId()).get();
+            if (positionRepo.findById(workerRepr.getPositionId()).isPresent()){
+                Position position = positionRepo.findById(workerRepr.getPositionId()).get();
+                worker.setPosition(position);
+            }
+            if (usersRepo.findByWorker(worker).isPresent()){
+                Users user = usersRepo.findByWorker(worker).get();
+                if (workerRepr.getLogin() != null) user.setLogin(workerRepr.getLogin());
+                if (workerRepr.getPassword() != null) user.setPassword(workerRepr.getPassword());
+                if (workerRepr.getRole() != null) user.setRole(workerRepr.getRole());
+                usersRepo.save(user);
+                worker.setUser(user);
+            }
+            if (workerRepr.getFirstName() != null) worker.setFirstName(workerRepr.getFirstName());
+            if (workerRepr.getSecondName() != null) worker.setSecondName(workerRepr.getSecondName());
+            if (workerRepr.getPhone() != null) worker.setPhone(workerRepr.getPhone());
+
+            workerRepo.save(worker);
+        }
+    }
 
     @PostMapping(value = "/interactionPoint")
     public void addInteractionPoint(@RequestBody InteractionPointRepr interactionPointRepr){
@@ -62,8 +86,21 @@ public class DtoController {
 
             InteractionPoint interactionPoint = new InteractionPoint();
             interactionPoint.setName(interactionPointRepr.getName());
-            interactionPoint.setActive(interactionPointRepr.isActive());
+            interactionPoint.setActive(interactionPointRepr.getActive());
             interactionPoint.setType(interactionTypePoint);
+        }
+    }
+    @PutMapping(value = "/interactionPoint")
+    public void updateInteractionPoint(@RequestBody InteractionPointRepr interactionPointRepr){
+        if (interactionPointRepo.findById(interactionPointRepr.getId()).isPresent()) {
+            InteractionPoint interactionPoint = interactionPointRepo.findById(interactionPointRepr.getId()).get();
+
+            if (interactionTypePointRepo.findById(interactionPointRepr.getTypeId()).isPresent()) {
+                InteractionTypePoint interactionTypePoint = interactionTypePointRepo.findById(interactionPointRepr.getTypeId()).get();
+                interactionPoint.setType(interactionTypePoint);
+            }
+            if (interactionPointRepr.getName() != null) interactionPoint.setName(interactionPointRepr.getName());
+            if (interactionPointRepr.getActive() != null) interactionPoint.setActive(interactionPointRepr.getActive());
         }
     }
 
@@ -83,6 +120,11 @@ public class DtoController {
         }
     }
 
+    @PutMapping(value = "/tempPointWorker")
+    public void updateTempPointWorker(@RequestBody TempPointWorkerRepr tempPointWorkerRepr){
+
+    }
+
     @PostMapping(value = "/typeService")
     public void addTypeService(@RequestBody TypeServiceRepr typeServiceRepr){
         if (interactionTypePointRepo.findById(typeServiceRepr.getTypeId()).isPresent()){
@@ -96,6 +138,10 @@ public class DtoController {
                 typeServiceRepo.save(typeService);
             }
         }
+    }
+    @PutMapping(value = "/typeService")
+    public void updateTypeService(@RequestBody TypeServiceRepr typeServiceRepr){
+
     }
 
     @PostMapping(value = "/serviceWorker")
@@ -112,6 +158,11 @@ public class DtoController {
             }
         }
     }
+
+    @PutMapping(value = "/serviceWorker")
+    public void updateServiceWorker(@RequestBody ServiceWorkerRepr serviceWorkerRepr){
+
+    }
     @PostMapping(value = "/positionDefaultService")
     public void addPositionDefaultService(@RequestBody PositionDefaultServiceRepr positionDefaultServiceRepr){
         if (positionRepo.findById(positionDefaultServiceRepr.getPositionId()).isPresent()){
@@ -125,5 +176,9 @@ public class DtoController {
                 positionDefaultServiceRepo.save(positionDefaultService);
             }
         }
+    }
+    @PutMapping(value = "/positionDefaultService")
+    public void updatePositionDefaultService(@RequestBody PositionDefaultServiceRepr positionDefaultServiceRepr){
+
     }
 }

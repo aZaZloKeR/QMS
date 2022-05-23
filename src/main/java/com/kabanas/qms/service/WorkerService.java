@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 
 @Service
-public class WorkService {
+public class WorkerService {
 
     @Autowired
     WorkerRepo workerRepo;
@@ -37,5 +37,8 @@ public class WorkService {
             interaction.setEndTime(new Date());
             interactionRepo.save(interaction);
         }
+    }
+    public void leaveWorkplace(int id){
+
     }
 }

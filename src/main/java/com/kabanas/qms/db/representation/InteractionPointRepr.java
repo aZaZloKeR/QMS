@@ -4,7 +4,8 @@ import lombok.Data;
 
 @Data
 public class InteractionPointRepr {
+    private Integer id;
     private String name;
-    private boolean active;
-    private int typeId;
+    private Boolean active;
+    private Integer typeId;
 }
