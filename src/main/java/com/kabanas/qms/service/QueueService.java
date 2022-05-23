@@ -41,13 +41,12 @@ public class QueueService {
                 Collection<ServiceWorker> serviceWorkers = freeWorker.getServiceWorkers();
                 for (ServiceWorker serviceWorker:serviceWorkers) {
                     if(Objects.equals(serviceWorker.getService().getName(), interaction.getService().getName())){
-                        freeWorker.setFree(false);
+                        freeWorker.setStatus("busy");
                         interaction.setWorker(freeWorker);
                         interaction.setStartTime(new Date());
                         interaction.setPoint(tempPointWorkerRepo.findThisInteractionPoint(freeWorker.getId()).get().getInteractionPoint());
-                        interaction.setStatus("served"); // на этом моменте статус находится на верефикации личности
+                        interaction.setStatus("waiting for identity confirmation"); // на этом моменте статус находится на верефикации личности
                         // и только потом, когда работник отправит данные о клиенте, статус изменится на served
-                        // ещё добавить сюда customer 'a
                     }
                 }
             }
@@ -57,7 +56,7 @@ public class QueueService {
     public void createInteraction(int serviceId){
         Interaction interaction = new Interaction();
         if (interactionRepo.findMaxOrigId().isPresent()) {
-            interaction.setOrigId(interactionRepo.findMaxOrigId().get() + 1);// нужно каждый раз проверять пользователя на ориг id//
+            interaction.setOrigId(interactionRepo.findMaxOrigId().get() + 1);// нужно каждый раз проверять пользователя на ориг id//(всем похуй)
         }
         else {
             interaction.setOrigId(1);

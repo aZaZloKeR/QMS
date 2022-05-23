@@ -2,7 +2,6 @@ package com.kabanas.qms.db.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -10,7 +9,6 @@ import java.util.Collection;
 @Data
 @Entity
 @Table(name = "Service")
-@ToString
 public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +21,7 @@ public class Service {
     @Column(name = "isActive")
     private boolean active;
     @Column(name = "isVisible_for_client")
-    private boolean visible;
+    private boolean visibleForClient;
 
     @OneToMany (mappedBy="service", fetch=FetchType.EAGER)
     @JsonIgnore

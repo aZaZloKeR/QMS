@@ -29,4 +29,8 @@ public class InteractionPoint {
     @JsonIgnore
     private Collection<Interaction> interactions;
 
+    @OneToMany (mappedBy="point", fetch=FetchType.EAGER)
+    @JsonIgnore
+    private Collection<TempPointWorker> tempPointWorkers;
+
 }

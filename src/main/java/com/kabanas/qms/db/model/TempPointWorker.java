@@ -11,8 +11,11 @@ import java.util.Date;
 @Entity
 @Table(name = "temp_point_worker")
 public class TempPointWorker{
-    @EmbeddedId
-    TempPointWorkerKey tempPointWorkerKey;
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     @Column(name = "start_time")
     private Date startTime;
@@ -20,12 +23,10 @@ public class TempPointWorker{
     private Date endTime;
 
     @ManyToOne(optional=false, cascade= CascadeType.ALL)
-    @MapsId("workerId")
     @JoinColumn(name = "worker_Id")
     private Worker worker;
 
     @ManyToOne(optional=false, cascade= CascadeType.ALL)
-    @MapsId("pointId")
     @JoinColumn(name = "point_Id")
     private InteractionPoint interactionPoint;
 
